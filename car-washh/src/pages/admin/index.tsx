@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../components/header";
+import { deleteClienteById, getAllClientes } from "../../services/api";
 
 interface dataProps {
     id: number;
@@ -16,28 +17,21 @@ export function Admin() {
 
     useEffect(() => {
 
-        const url = 'http://localhost:8080/api/clientes/all';
+        async function fetchData() {
+            try {
+                const response = await getAllClientes();
+                setData(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
-        fetch(url)
-        .then(response => response.json())
-        .then(json => setData(json))
-        .catch(error => console.log(error));
-
-        console.log(data);
+        fetchData();
     }, [data]);
 
 
     async function deleteCliente(id: number) {
-        const url = `http://localhost:8080/api/clientes/delete/${id}`;
-
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.text())
-        .then(text => console.log(text))
+        deleteClienteById(id);
     }
     
 
