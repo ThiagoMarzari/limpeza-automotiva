@@ -1,11 +1,21 @@
+import { createBrowserRouter } from "react-router-dom";
+import { Home } from "./pages/home";
+import { Admin } from "./pages/admin";
+import { Agendamento } from "./pages/agendamento";
 
-function App() {
-  return (
-    <div>
-      <h1>Bem vindo</h1>
-    </div>     
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/admin",
+    element: <Admin/>
+  },
+  {
+    path: "/agendamento",
+    element: <Agendamento/>
+  }
+]);
 
-  )
-}
-
-export default App
+export {router};
