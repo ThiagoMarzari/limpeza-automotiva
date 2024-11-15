@@ -8,8 +8,6 @@ export interface apiProps {
     mensagem: string;
 }
 
-
-
 const baseUrl: string = 'http://localhost:8080';
 
 export async function getAllClientes(): Promise<apiProps[]> {
@@ -29,6 +27,23 @@ export async function deleteClienteById(id: number): Promise<void> {
         console.log(error);
         
     }  
+}
+
+export async function readMensagem(id: number): Promise<String> {
+    try{
+        const response = await fetch(`${baseUrl}/api/clientes/mensagem/${id}`);
+        let mensagem = response.text();
+        if ((await mensagem).length === 0) {
+            return "Não há mensagem";
+        }
+        else {
+            return await mensagem;
+        }
+    }
+    catch(error){
+        console.log(error)
+        return "Não foi possível ler a mensagem";
+    }
 }
 
 export async function createCliente(clienteProps: apiProps): Promise<void> {

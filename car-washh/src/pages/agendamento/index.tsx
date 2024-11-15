@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import { Container } from "../../components/container";
 import { createCliente } from "../../services/api";
+import { toast } from "react-toastify";
 
 export function Agendamento(){
 
@@ -14,6 +15,11 @@ export function Agendamento(){
         const data = (document.getElementById("data") as HTMLInputElement).value;
         const mensagem = (document.getElementById("mensagem") as HTMLInputElement).value;
         
+        if (!nome || !celular || !veiuclo || !placa || !data) {
+            toast.error("Preencha todos os campos");
+            return;
+        }
+
         console.log(nome, celular, placa, data, mensagem);
 
         createCliente({
@@ -24,8 +30,14 @@ export function Agendamento(){
             dataAgendamento: data,
             mensagem
         })
-        .then((mensagem) => {
-            alert(mensagem);
+        .then(() => {
+            toast.success("Agendamento realizado com sucesso");
+            (document.getElementById("nome") as HTMLInputElement).value = "";
+            (document.getElementById("celular") as HTMLInputElement).value = "";
+            (document.getElementById("veiculo") as HTMLInputElement).value = "";
+            (document.getElementById("placa") as HTMLInputElement).value = "";
+            (document.getElementById("data") as HTMLInputElement).value = "";
+            (document.getElementById("mensagem") as HTMLInputElement).value = "";
         })
     }
 
@@ -39,7 +51,7 @@ export function Agendamento(){
                     <input type="text" placeholder="Celular/Telefone" className="p-2 rounded-md" id="celular"/>
                     <input type="text" placeholder="Veiculo" className="p-2 rounded-md" id="veiculo"/>
                     <input type="text" placeholder="Placa" className="p-2 rounded-md" id="placa"/>
-                    <input type="text" placeholder="Data" className="p-2 rounded-md" id="data"/>
+                    <input type="date" placeholder="Data" className="p-2 rounded-md" id="data"/>
                     <textarea placeholder="Mensagem" className="p-2 rounded-md" id="mensagem"></textarea>
 
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Agendar</button>
