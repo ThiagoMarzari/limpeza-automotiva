@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Header } from "../../components/header";
 import { deleteClienteById, getAllClientes } from "../../services/api";
+import { Container } from "../../components/container";
 
 interface dataProps {
     id: number;
@@ -34,10 +34,8 @@ export function Admin() {
         deleteClienteById(id);
     }
     
-
     return (
-        <div className="p-6">
-            <Header/>
+        <Container>
             <h1 className="text-center text-2xl font-bold mb-4">Visão Geral dos Agendamentos</h1>
 
             <table className="table-auto w-full border-collapse border border-gray-200 text-center">
@@ -67,6 +65,6 @@ export function Admin() {
                     ))}
                 </tbody>
             </table>
-        </div>
+        </Container>
     );
 }
