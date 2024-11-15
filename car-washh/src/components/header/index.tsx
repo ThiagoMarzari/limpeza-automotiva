@@ -6,10 +6,9 @@ export function Header(){
             
             <div className="flex w-full items-center max-w-3xl justify-between">
 
-                <h1 className="text-2xl sm:text-3xl font-bold">Wolf Flix</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold">Limpeza automotiva</h1>
                 <ol className="flex gap-4">
                     <li> <Link className="hover:font-bold sm:text-xl" to="/">Home</Link> </li>
-                    <li> <Link className="hover:font-bold sm:text-xl" to="/filmes">Filmes</Link></li>
                     <li> <Link className="hover:font-bold sm:text-xl" to="/admin">Admin</Link> </li>
                 </ol>
             </div>
