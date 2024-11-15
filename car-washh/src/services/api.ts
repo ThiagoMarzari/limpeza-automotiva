@@ -25,7 +25,6 @@ export async function deleteClienteById(id: number): Promise<void> {
         })
     } catch (error) {
         console.log(error);
-        
     }  
 }
 
@@ -61,6 +60,5 @@ export async function createCliente(clienteProps: apiProps): Promise<void> {
         })
     } catch (error) {
         console.log(error);
-        
     }
 }

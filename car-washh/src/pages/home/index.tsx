@@ -11,7 +11,9 @@ export function Home() {
                 <h2 className="text-4xl md:text-8xl text-white font-bold relative">Limpeza Automotiva</h2>
                 <p className="md:text-xl text-white relative">Limpeza de carros, motos, caminhões e etc.</p>
 
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 relative">Nossos serviços</button>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 relative hover:scale-125">
+                    Nossos serviços
+                </button>
             </div>
 
             <div className="mt-16 text-white ">
@@ -41,6 +43,13 @@ export function Home() {
                     <ServiceCard imgPath={"src/assets/services3.svg"}
                         title={"Equipe Treinada e Experiente"}
                         description={"Nossa equipe de profissionais qualificados tem ampla experiência em cuidados automotivos, proporcionando um serviço confiável e de confiança."} />
+                </div>
+            </div>
+
+            <div className="flex justify-cente items-center w-full mt-24 flex-col gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
+                    <img className="w-full md:w-1/2" src="src/assets/mapa.png" alt="Localizacao" />
+                    <img className="w-full md:w-1/2" src="src/assets/wash.jpg" alt="Wash" />
                 </div>
             </div>
         </Container>

@@ -20,7 +20,7 @@ export function CardPrice(props: CardPriceProps){
             </div>
             <div className="flex flex-col gap-2 bo">
                 <h3 className="text-2xl font-bold">{props.title}</h3>
-                <span className="text-xl font-bold">Preço R${props.price}</span>
+                <span className="text-xl font-bold">Preço R${props.price},00</span>
                 <p>{props.description}</p>
             </div>
 

@@ -5,7 +5,7 @@ import { Header } from "../header";
 
 export function Container({children}: {children: ReactNode}) {
     return(
-        <div className="w-full max-w-7xl min-h-screen mx-auto px-2">
+        <div className="w-full max-w-7xl min-h-screen mx-auto px-4">
             <Header/>
             
             {children}
