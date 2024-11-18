@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { deleteClienteById, getAllClientes, readMensagem } from "../../services/api";
 import { Container } from "../../components/container";
 import { toast } from "react-toastify";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../services/firebase";
 
 interface dataProps {
     id: number;
@@ -14,6 +17,7 @@ interface dataProps {
 
 export function Admin() {
     const [data, setData] = useState<dataProps[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -35,6 +39,20 @@ export function Admin() {
 
         fetchData();
     }, [data]);
+
+    useEffect(() => {
+
+        const unsub = onAuthStateChanged(auth, (user) => {
+            if (!user){
+                navigate("/login");
+            }
+        })
+
+        return () => {
+            unsub();
+        }
+        
+    }, [])
 
     async function deleteCliente(id: number) {
         deleteClienteById(id);

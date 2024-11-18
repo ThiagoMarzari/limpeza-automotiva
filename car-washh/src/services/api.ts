@@ -11,7 +11,12 @@ export interface apiProps {
 const baseUrl: string = 'http://localhost:8080';
 
 export async function getAllClientes(): Promise<apiProps[]> {
-    const response = await fetch(`${baseUrl}/api/clientes/all`);
+    const response = await fetch(`${baseUrl}/api/clientes/all`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+    })
     return response.json();
 }
 

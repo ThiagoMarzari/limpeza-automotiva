@@ -1,20 +1,56 @@
-import { Button } from "../../components/button";
-import { Container } from "../../components/container";
+import { FormEvent, useState } from "react";
 import { Input } from "../../components/input";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import { auth } from "../../services/firebase";
+import { Container } from "../../components/container";
+import { FormContainer } from "../../components/formContainer";
+import { Button } from "../../components/button";
+
 
 export function Login() {
+
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const navigate = useNavigate();
+
+
+    async function handleSubmit(e: FormEvent) {
+        e.preventDefault();
+
+        if (email === "" || senha === "") {
+            return;
+        }
+
+        await signInWithEmailAndPassword(auth, email, senha)
+            .then(data => {
+                console.log(data);
+                navigate("/admin");
+            })
+            .catch(() => {
+                toast.error("Dados invalidos");
+            })
+    }
+
     return (
         <Container>
-            <h1 className="text-4xl text-white text-center font-bold">
-                Login
-            </h1>
-            <div className="w-full flex items-center justify-center">
-                <form className="max-w-xl text-center">
-                    <Input type="email" placeholder="email" />
-                    <Input type="password" placeholder="senha" />
-                    <Button>Entrar</Button>
-                </form>
-            </div>
+            <FormContainer handleSubmit={handleSubmit}>
+                <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                    type="password"
+                    placeholder="Senha"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                />
+
+                <Button>Entrar</Button>
+            </FormContainer>
         </Container>
-    )
+    );
 }
