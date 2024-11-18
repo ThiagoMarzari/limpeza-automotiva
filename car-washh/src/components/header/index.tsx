@@ -1,13 +1,32 @@
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../services/firebase";
+import { useEffect, useState } from "react";
 
 export function Header(){
+
+    const [logado, setLogado] = useState(false);
 
     function handleSignOut() {
         signOut(auth)
         location.reload(); //Reload na página
     }
+
+    useEffect(() => {
+
+        const unsub = onAuthStateChanged(auth, (user) => {
+            if (!user){
+                setLogado(false)
+            }
+            else {
+                setLogado(true)
+            }
+        })
+
+        return () => {
+            unsub();
+        }
+    }, [])
 
     
     return(
@@ -18,11 +37,11 @@ export function Header(){
                 <h1 className="text-2xl sm:text-3xl font-bold ">Limpeza automotiva</h1>
                 <ol className="flex gap-4">
                     <li> <Link className="hover:font-bold sm:text-xl" to="/">Home</Link> </li>
-                    {auth.currentUser && (
+                    {logado && (
                         <li> <Link className="hover:font-bold sm:text-xl" to="/admin">Admin</Link> </li>
                     )}
                     
-                    {auth.currentUser ? (
+                    {logado ? (
                         <button
                             onClick={handleSignOut}
                             className="text-lg text-red-600 hover:text-red-800 transition"
@@ -39,7 +58,6 @@ export function Header(){
                     )}
                 </ol>
             </div>
-
         </header>
     )
 }
