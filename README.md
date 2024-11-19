@@ -1,13 +1,48 @@
-#Introdução
-Este projeto é o trabalho final para o curso de Ciência da Computação na disciplina de Tecnologias Web.
+# **Aplicação de Limpeza de Carros**
 
-##Sobre o projeto
-Esse site vai permitir visualizar os servicos que a empresa de limpeza de carros oferece alem de que o cliente tambem vai poder agendar uma limpeza para seu carro no proprio site.
+Um sistema simples para gerenciar agendamentos de limpeza de veículos, com backend desenvolvido em **Spring Boot** e frontend em **ReactJS**.
 
-##Tecnologias utilizadas
-- Spring boot com Java para o Backend
-- Xampp
-- Banco de dados MariaDB
-- React + TypeScript + TailwindCSS para o frontend
+---
 
-  ##Funcionalidades
+## **Sobre o Projeto**
+Essa aplicação permite que clientes agendem limpezas de veículos no site. O projeto foi desenvolvido para a disciplina de **Tecnologias Web**.
+
+---
+
+## **Tecnologias Utilizadas**
+
+### **Backend**
+- Spring Boot
+- MariaDB (banco de dados)
+- XAMPP
+- Firebase Auth
+
+### **Frontend**
+- ReactJS
+- TailwindCSS
+
+---
+
+## **Funcionalidades**
+- **Login de Usuários**
+- Sistema de autenticação utilizando o **Firebase Auth**.
+- Dashboard para visualizar todos os agendamentos.
+- Cadastro de agendamentos com nome do veículo, placa e data para o dia da limpeza.
+- Exclusão de agendamentos.
+
+---
+
+## **Como Executar o Projeto**
+
+### **Clone o Repositório**
+```bash
+git clone https://github.com/ThiagoMarzari/trabalho-final-tecnologias-web.git
+```
+
+### Na pasta do frontend
+```bash
+npm install
+npm run dev 
+```
+
+**Este projeto está licenciado sob a licença MIT.**
