@@ -36,6 +36,12 @@ Essa aplicação permite que clientes agendem limpezas de veículos no site. O p
 ```bash
 git clone https://github.com/ThiagoMarzari/trabalho-final-tecnologias-web.git
 ```
+### Na pasta do backend 'car-wash'
+- Configure o banco de dados no arquivo application.properties:
+- Altere o nome do banco de dados para o que você vai utilizar.
+- Compile e execute o backend:
+
+O backend estará disponível em: http://localhost:8080.
 
 ### Na pasta do frontend 'car-washh'
 ```bash
